@@ -1,4 +1,4 @@
-FROM golang:alpineN
+FROM golang:alpine
 
 COPY . /app
 
