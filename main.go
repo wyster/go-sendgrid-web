@@ -31,5 +31,9 @@ func main() {
 	fmt.Println("started")
 	http.HandleFunc("/template/list/", templatesListHandler)
 	http.HandleFunc("/template/show/", templateShowHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	httpPort := "80"
+	if len(os.Getenv("HTTP_PORT")) > 0 {
+		httpPort = os.Getenv("HTTP_PORT")
+	}
+	log.Fatal(http.ListenAndServe(":"+httpPort, nil))
 }
